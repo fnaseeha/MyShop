@@ -1,0 +1,12 @@
+server:
+  port: 1990
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+spring:
+  application:
+    name: product
+
