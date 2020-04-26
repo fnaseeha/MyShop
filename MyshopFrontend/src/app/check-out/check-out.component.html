@@ -1,0 +1,42 @@
+<h1>Shipping</h1>
+<div class="row">
+    <div class="col-6">
+        <form #f="ngForm">
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input #name="ngModel" [(ngModel)]="shipping.name" type="text" class="form-control" name="name" required>
+                <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                    <div *ngIf="name.errors.required">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input #addressLine1="ngModel" [(ngModel)]="shipping.addressLine1" placeholder="Line 1" name="addressLine1" 
+                id="addressLine1" type="text" class="form-control" required>
+                    <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid">
+                        <div *ngIf="addressLine1.errors.required">Address is required</div>
+                    </div>
+            </div>
+        
+            <div  class="form-group">
+                <input #addressLine2="ngModel" [(ngModel)]="shipping.addressLine2" name="addressLine2" placeholder="Line 2" id="addressLine2" type="text" class="form-control"
+                    >
+            </div>
+        
+            <div class="form-group">
+                <label for="city">City</label>
+                <input #city="ngModel" [(ngModel)]="shipping.city" name="city" id="city" type="text" class="form-control" required>
+                <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+                    <div *ngIf="city.errors.required">City is required</div>
+                </div>
+            </div>
+            <button 
+            (click)="placeOrder()"
+            [disabled]="!f.valid"
+            class="btn btn-primary">Place Order</button>
+        </form>
+    </div>
+    <div class="col-6">
+        <shopping-cart-summary [cart]="cart"></shopping-cart-summary>
+    </div>
+</div>
