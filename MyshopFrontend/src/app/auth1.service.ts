@@ -37,13 +37,12 @@ export class Auth1Service {
 
   getId(id:string):Observable<AppUser>{
     let uid = +id;
-    console.log('url '+AppComponent.API_URL_LOGIN + '/user/'+id);
     return this.http.get<AppUser>(AppComponent.API_URL_LOGIN + '/user/'+id);
   }
 
   get appUser_() :Observable<AppUser>{
    let id =  localStorage.getItem('u_id');
-   console.log('id is >>'+id);
+  
    if(id != null){
      return this.getId(id);
    }

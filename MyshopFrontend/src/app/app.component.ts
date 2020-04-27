@@ -12,6 +12,7 @@ export class AppComponent
 {
   
   static API_URL_LOGIN="http://localhost:1994";
+  static API_URL_ORDER="http://localhost:1996";
 
   constructor(private userService:UserService,private auth:AuthService, router:Router){
     auth.user_.subscribe(user =>{

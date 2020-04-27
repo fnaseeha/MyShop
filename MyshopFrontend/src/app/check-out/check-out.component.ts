@@ -6,6 +6,7 @@ import { OrderService } from '../order.service';
 import { AuthService } from '../auth.service';
 import { Order } from '../model/Order';
 import { Router } from '@angular/router';
+import { CustomOrder } from '../model/CustomOrder';
 
 @Component({
   selector: 'app-check-out',
@@ -54,10 +55,17 @@ export class CheckOutComponent implements OnInit,OnDestroy {
   }
 
   async placeOrder(){
-    let order = new Order(this.userId,this.shipping,this.cart);
+    let order = new CustomOrder(this.userId,this.shipping,this.cart);
+
+
     let result = await this.orderservice.placeOrder(order);
+    result.subscribe((data:any)=>{
+      console.log('data',data);
+      this.shoppingcartService.clearCart();
+      this.route.navigate(['/order-success',data.id]);
+    })
     
-    this.route.navigate(['/order-success',result.key]);//stored id
+    ////stored id
    
   }
 }

@@ -1,4 +1,4 @@
-package lk.nasi.OrderService;
+package lk.nasi.orderService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
